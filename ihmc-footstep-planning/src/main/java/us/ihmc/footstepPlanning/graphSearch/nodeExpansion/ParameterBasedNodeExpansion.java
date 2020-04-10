@@ -83,6 +83,14 @@ public class ParameterBasedNodeExpansion
       {
          idealStepProximityComparator.update(stanceNode);
          expansion.sort(idealStepProximityComparator);
+
+         if (parameters.getMaximumBranchFactor() > 0)
+         {
+            while (expansion.size() > parameters.getMaximumBranchFactor())
+            {
+               expansion.remove(expansion.size() - 1);
+            }
+         }
       }
 
       return expansion;
